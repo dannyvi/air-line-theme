@@ -139,8 +139,19 @@ let g:airline#themes#concerto#palette.inactive_modified = {
 " will be red instead of the section's foreground color. You can also have
 " multiple parts with accents within a section.
 let g:airline#themes#concerto#palette.accents = {
-      \ 'red': [ '#ff0000' , '' , 160 , ''  ]
+      \ 'red': [ '#ff0000' , '' , 190 , ''  ]
       \ }
+
+" Here we define the color map for ctrlp.  We check for the g:loaded_ctrlp
+" variable so that related functionality is loaded iff the user is using
+" ctrlp. Note that this is optional, and if you do not define ctrlp colors
+" they will be chosen automatically from the existing palette.
+if get(g:, 'loaded_ctrlp', 0)
+  let g:airline#themes#concerto#palette.ctrlp = airline#extensions#ctrlp#generate_color_map(
+        \ [ '#d7d7ff' , '#5f00af' , 189 , 55  , ''     ],
+        \ [ '#ffffff' , '#875fd7' , 231 , 98  , ''     ],
+        \ [ '#5f00af' , '#ffffff' , 55  , 231 , 'bold' ])
+endif
 
 
 let g:airline#themes#concerto#palette.normal.airline_error = [
@@ -167,14 +178,28 @@ let g:airline#themes#concerto#palette.replace.airline_error =
 
 let g:airline#themes#concerto#palette.replace_modified.airline_error =
     \ g:airline#themes#concerto#palette.normal.airline_error
-" Here we define the color map for ctrlp.  We check for the g:loaded_ctrlp
-" variable so that related functionality is loaded iff the user is using
-" ctrlp. Note that this is optional, and if you do not define ctrlp colors
-" they will be chosen automatically from the existing palette.
-if get(g:, 'loaded_ctrlp', 0)
-  let g:airline#themes#concerto#palette.ctrlp = airline#extensions#ctrlp#generate_color_map(
-        \ [ '#d7d7ff' , '#5f00af' , 189 , 55  , ''     ],
-        \ [ '#ffffff' , '#875fd7' , 231 , 98  , ''     ],
-        \ [ '#5f00af' , '#ffffff' , 55  , 231 , 'bold' ])
-endif
 
+let g:airline#themes#concerto#palette.normal.airline_warning = [
+     \  '#ff0000' , '' , 234 , 181
+     \ ]
+
+let g:airline#themes#concerto#palette.normal_modified.airline_warning =
+    \ g:airline#themes#concerto#palette.normal.airline_warning
+
+let g:airline#themes#concerto#palette.insert.airline_warning =
+    \ g:airline#themes#concerto#palette.normal.airline_warning
+
+let g:airline#themes#concerto#palette.insert_modified.airline_warning =
+    \ g:airline#themes#concerto#palette.normal.airline_warning
+
+let g:airline#themes#concerto#palette.visual.airline_warning =
+    \ g:airline#themes#concerto#palette.normal.airline_warning
+
+let g:airline#themes#concerto#palette.visual_modified.airline_warning =
+    \ g:airline#themes#concerto#palette.normal.airline_warning
+
+let g:airline#themes#concerto#palette.replace.airline_warning =
+    \ g:airline#themes#concerto#palette.normal.airline_warning
+
+let g:airline#themes#concerto#palette.replace_modified.airline_warning =
+    \ g:airline#themes#concerto#palette.normal.airline_warning
